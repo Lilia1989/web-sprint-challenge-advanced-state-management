@@ -5,7 +5,8 @@ import { applyMiddleware, createStore } from "redux";
 import { logger } from "redux-logger";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import reducer from './reducers'
+import reducer from './reducers';
+import { smurfsReducer } from './reducers';
 
 import "./index.css";
 import App from "./App";

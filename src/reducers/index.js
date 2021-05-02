@@ -1,4 +1,4 @@
-import { FETCHING_FAILURE, FETCHING_START, FETCHING_SUCCESS } from '../actions'
+import { FETCHING_FAILURE, FETCHING_START, FETCHING_SUCCESS, ADD_SMURF, ERROR_MESSAGE  } from '../actions'
 export const initialState = {
     smurfs: [],
     loading: false,
@@ -20,6 +20,35 @@ const reducer = (state = initialState, action)=>{
 
 export default reducer;
 
+const initlState = {
+    friends: [
+      { name: '',nickname: '', position: '', description: ''}
+    ]
+  };
+  
+  export const smurfsReducer = (state = initlState, action) => {
+    switch (action.type) {
+      case ADD_SMURF:
+        const newSmurf = {
+          name: action.payload,
+          nickname: action.payload,
+          position: action.payload,
+          description: action.payload
+        };
+        return {
+          ...state,
+          smurfs: [...state.smurfs, newSmurf]
+        };
+      case ERROR_MESSAGE:
+        return {
+          ...state, 
+          smurfs: [...state.smurfs, null]
+        };
+      default:
+        return state;
+    }
+  };
+
 
 
 
@@ -36,4 +65,7 @@ export default reducer;
 //5. Add in a reducer cases to accomidate the failed smurf api fetch.
 //6. Add in a reducer case to accomidate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
 //7. Add in a reducer case that adds in a value to the error message.
+
+
+
 
